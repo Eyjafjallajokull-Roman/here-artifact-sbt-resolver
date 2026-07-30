@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019-2025 HERE Europe B.V.
+ * Copyright (C) 2019-2026 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,7 @@
 
 package com.here.platform.artifact.sbt.resolver
 
-import java.net.{URL, URLStreamHandler, URLStreamHandlerFactory}
-
+import java.net.{URI, URL, URLStreamHandler, URLStreamHandlerFactory}
 import org.apache.ivy.util.url.{URLHandlerDispatcher, URLHandlerRegistry}
 import sbt.Keys._
 import sbt._
@@ -41,13 +40,13 @@ object ArtifactResolverPlugin extends AutoPlugin {
       // if it's not already installed (since a second call to URL.setURLStreamHandlerFactory
       // will fail).
       try {
-        new URL("here+artifact-service://example.com")
+        URI.create("here+artifact-service://example.com").toURL
         debug("here+artifact-service:// URLStreamHandler is already installed")
       } catch {
         // This means we haven't installed the handler, so install it
         case _: java.net.MalformedURLException =>
           info(
-            "Installing the here+artifact-service// URLStreamHandler via java.net.URL.setURLStreamHandlerFactory")
+            "Installing the here+artifact-service:// URLStreamHandler via java.net.URL.setURLStreamHandlerFactory")
           URL.setURLStreamHandlerFactory(HereURLStreamHandlerFactory)
       }
 
