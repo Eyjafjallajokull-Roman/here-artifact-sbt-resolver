@@ -87,6 +87,6 @@ export JAVA_OPTS="-Dhttp.proxyHost=PROXY_HOST -Dhttp.proxyPort=PROXY_PORT -Dhttp
 ```
 
 ## License
-Copyright (C) 2019-2025 HERE Europe B.V.
+Copyright (C) 2019-2026 HERE Europe B.V.
 
 Unless otherwise noted in `LICENSE` files for specific files or directories, the [LICENSE](LICENSE) in the root applies to all content in this repository.
